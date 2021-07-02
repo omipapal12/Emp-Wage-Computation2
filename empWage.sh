@@ -10,6 +10,7 @@ MAX_HRS_IN_MONTH=100
 totalEmpHrs=0
 totalWorkingDays=0
 
+declare -A empDailyWage
 getWorkingHours(){
 	case $1 in
       $IS_FULLTIME) empHrs=8
@@ -39,6 +40,7 @@ do
 
 done
 Wage=$(($totalEmpHrs*$empRatePerHr))
+empDailyWage[Total Wage]=$Wage
 echo Total Wage :: $Wage
+echo "Day :: " sort ${!empDailyWage[@]}
 echo "Daily Wage :: "${empDailyWage[*]}
-
